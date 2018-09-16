@@ -57,15 +57,15 @@ def scheduler_execution(action_id):
     }
 
     headers = {
-        "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'http://10.68.15.168:8080/login',
+        'Referer': 'https://beta.tocabot.io/login',#'http://10.68.15.168:8080/login',
         'Content-Type': 'application/json;charset=utf-8',
         'Connection': 'keep-alive',
     }
 
-    data = '{"email":"admin@tocabot.io","password":"tocabot"}'
+    data = '{"email":"admin@tocabot.io","password": "CheckOUTth!spasschang#"}' #tocabot
 
     response = requests.post('http://10.68.15.168:8080/rpa-security-rest/v1/user/auth/login', headers=headers, cookies=cookies, data=data)
 
@@ -73,10 +73,10 @@ def scheduler_execution(action_id):
 
     # replace the headers var above to satisfy the new request.
     headers = {
-        "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'http://10.68.15.168:8080/dashboard',
+        'Referer': 'https://beta.tocabot.io/dashboard',#''http://10.68.15.168:8080/dashboard',
         'Content-Type': 'application/json;charset=utf-8',
         'Authorization': 'Bearer '+jwttoken,
         'X-User-Timezone': 'GMT+0100',
@@ -101,27 +101,27 @@ def get_table():
     }
 
     headers = {
-        "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'http://10.68.15.168:8080/login',
+        'Referer': 'https://beta.tocabot.io/login',#'http://10.68.15.168:8080/login',
         'Content-Type': 'application/json;charset=utf-8',
         'Connection': 'keep-alive',
     }
 
-    data = '{"email":"admin@tocabot.io","password":"tocabot"}'
+    data = '{"email":"admin@tocabot.io","password":"CheckOUTth!spasschang#"}'#tocabot"}'
 
-    response = requests.post('http://10.68.15.168:8080/rpa-security-rest/v1/user/auth/login', headers=headers,
+    response = requests.post('https://beta.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
                              cookies=cookies, data=data)
 
     jwttoken = response.headers['Authorization']
 
     # replace the headers var above to satisfy the new request.
     headers = {
-        "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'http://10.68.15.168:8080/dashboard',
+        'Referer': 'https://beta.tocabot.io/dashboard',#'http://10.68.15.168:8080/dashboard',
         'Content-Type': 'application/json;charset=utf-8',
         'Authorization': 'Bearer ' + jwttoken,
         'X-User-Timezone': 'GMT+0100',
