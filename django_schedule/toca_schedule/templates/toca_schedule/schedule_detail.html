@@ -1,0 +1,22 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="schedule-detail">
+    <div class="schedule">
+        <h2> Job: {{schedule.job}} </h2>
+        <p>Action ID: {{schedule.action_id}}</p>
+        <p>Created at: {{schedule.started}}</p>
+        <p>Cron Schedule: {{schedule.scheduled}}</p>
+        <p>Author: {{schedule.author}}</p>
+    </div>
+    <form class="create-link" action="{% url 'toca_schedule:list' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Schedule List</button>
+    </form>
+    <form class="create-link" action="{% url 'toca_schedule:delete' job_id=schedule.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+</div>
+
+{% endblock %}

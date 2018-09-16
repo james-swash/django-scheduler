@@ -1,0 +1,49 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="create_schedule">
+    <h2>Create a new schedule</h2>
+    <form class="site-form" action="{% url 'toca_schedule:create' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <input type="submit" value="Save">
+    </form>
+    <!-- Button trigger modal -->
+ <div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span>&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <table class="table table-hover" style="width:80%;" align="center">
+        <tr>
+            <th>Action name</th>
+            <th>Description</th>
+            <th>Action ID</th>
+        </tr>
+
+            {% for action in action_table %}
+            <div class="schedule">
+                <tr>
+                    <td>{{action.name}}</td>
+                    <td>{{action.description}}</td>
+                    <td>{{action.id}}</td>
+                </tr>
+            </div>
+            {% endfor %}
+    </table>
+</div>
+{% endblock %}

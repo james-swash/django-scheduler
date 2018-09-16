@@ -1,0 +1,38 @@
+{% extends 'base_layout.html'%}
+
+{% block content %}
+<div class="col-md-12" style="box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19);">
+    <h1>SCHEDULE</h1>
+</div>
+
+<div class="schedules">
+    <table class="table table-hover" style="width:75%;" align="center">
+        <tr>
+            <th>Job ID</th>
+            <th>Job</th>
+            <th>Action ID</th>
+            <th>Started</th>
+            <th>Scheduled For</th>
+            <th>Created By</th>
+        </tr>
+
+            {% for schedule in schedules %}
+            <div class="schedule">
+                <tr>
+                    <td><a href="{% url 'toca_schedule:detail' job_id=schedule.id %}">{{schedule.id}}</a></td>
+                    <td>{{schedule.job}}</td>
+                    <td>{{schedule.action_id}}</td>
+                    <td>{{schedule.started}}</td>
+                    <td>{{schedule.scheduled}}</td>
+                    <td>{{schedule.author}}</td>
+                </tr>
+            </div>
+            {% endfor %}
+    </table>
+    <form class="create-link" action="{% url 'toca_schedule:create' %}" method="post" style="margin-left: 12.4%;">
+        {% csrf_token %}
+        <button class="btn btn-primary" type="submit">Add +</button>
+    </form>
+</div>
+{% endblock %}
+
