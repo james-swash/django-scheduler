@@ -11,6 +11,7 @@
             <th>Job ID</th>
             <th>Job</th>
             <th>Action ID</th>
+            <th>Description</th>
             <th>Started</th>
             <th>Scheduled For</th>
             <th>Created By</th>
@@ -22,6 +23,7 @@
                     <td><a href="{% url 'toca_schedule:detail' job_id=schedule.id %}">{{schedule.id}}</a></td>
                     <td>{{schedule.job}}</td>
                     <td>{{schedule.action_id}}</td>
+                    <td>{{schedule.description}}</td>
                     <td>{{schedule.started}}</td>
                     <td>{{schedule.scheduled}}</td>
                     <td>{{schedule.author}}</td>

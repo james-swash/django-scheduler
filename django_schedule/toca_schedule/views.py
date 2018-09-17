@@ -23,14 +23,13 @@ def schedule_delete(request, job_id):
 @login_required(login_url="/accounts/login/")
 def schedule_create(request):
     actions_table = controller.get_table()
-    workflow_id = request.GET.get('id')
     if request.method == 'POST':
         form = forms.CreateSchedule(request.POST)#, request.FILES) <-- include if upload field on the form
         if form.is_valid():
             instance = form.save(commit=False)
             instance.author = request.user
             instance.save()
-            chronic = controller.CronObj(action_id=workflow_id, scheduled=instance.scheduled, job_id=instance.id)
+            chronic = controller.CronObj(action_id=instance.action_id, scheduled=instance.scheduled, job_id=instance.id)
             chronic.start_job()
             return redirect('toca_schedule:list')
     else:

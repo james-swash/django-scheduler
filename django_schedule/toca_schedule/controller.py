@@ -67,7 +67,7 @@ def scheduler_execution(action_id):
 
     data = '{"email":"admin@tocabot.io","password": "CheckOUTth!spasschang#"}' #tocabot
 
-    response = requests.post('http://10.68.15.168:8080/rpa-security-rest/v1/user/auth/login', headers=headers, cookies=cookies, data=data)
+    response = requests.post('https://beta.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers, cookies=cookies, data=data)
 
     jwttoken = response.headers['Authorization']
 
@@ -85,7 +85,7 @@ def scheduler_execution(action_id):
 
     data = '{"orderBy":{"id":"desc"},"limit":15,"page":1,"order":"id","count":0}'
 
-    response = requests.post('http://10.68.15.168:8080/rpa-core-server-rest/v1/workflow/'+action_id+'/execute', headers=headers, cookies=cookies, data=data)
+    response = requests.post('https://beta.tocabot.io/rpa-core-server-rest/v1/workflow/'+action_id+'/execute', headers=headers, cookies=cookies, data=data)
 
     print(response.text)
 
@@ -130,7 +130,7 @@ def get_table():
 
     data = '{"orderBy":{"id":"desc"},"limit":15,"page":1,"order":"id","count":0}'
 
-    response = requests.post('http://10.68.15.168:8080/rpa-core-server-rest/v1/workflow/query', headers=headers,
+    response = requests.post('https://beta.tocabot.io/rpa-core-server-rest/v1/workflow/query', headers=headers,
                              cookies=cookies, data=data)
 
     records = json.loads(response.text)['records']
