@@ -6,11 +6,16 @@ from django_apscheduler.jobstores import DjangoJobStore
 scheduler = BackgroundScheduler()
 scheduler.add_jobstore(DjangoJobStore(), "default")
 scheduler.start()
+SWITCH = {
+    'tocabot@ri-team.com': 't0caTRIAL4r3tailinsights',
+    'rich.s@blocknine.net': 't0caTRIAL4bl0ckN1NE$',
+    'oliver.clinch@bizdevpros.co.uk': 't0caTRIAL4B1ZD3Vpros'
+}
 
 
 class CronObj(object):
 
-    def __init__(self, action_id, scheduled, job_id):
+    def __init__(self, action_id, scheduled, job_id, username):
         split_string = scheduled.split(' ')
         self.year = split_string[0]
         self.month = split_string[1]
@@ -22,6 +27,7 @@ class CronObj(object):
         self.second = split_string[7]
         self.action_id = action_id
         self.job_id = str(job_id)
+        self.username = username
         # self.start = split_string[8]
         # self.end = split_string[9]
 
@@ -29,7 +35,10 @@ class CronObj(object):
         print(self.action_id)
         scheduler.add_job(
             func=scheduler_execution,
-            kwargs={'action_id': self.action_id},
+            kwargs={
+                'action_id': self.action_id,
+                'username': self.username
+            },
             trigger='cron',
             id=self.job_id,
             year=self.year,
@@ -49,7 +58,7 @@ def scheduler_print(action_id):
     print(action_id)
 
 
-def scheduler_execution(action_id):
+def scheduler_execution(action_id, username):
 
     cookies = {
         '_ga': 'GA1.2.995791224.1495549650',
@@ -65,7 +74,7 @@ def scheduler_execution(action_id):
         'Connection': 'keep-alive',
     }
 
-    data = '{"email":"admin@tocabot.io","password": "CheckOUTth!spasschang#"}' #tocabot
+    data = '{"email": {0},"password": {1}}'.format(username, SWITCH.get(username))
 
     response = requests.post('https://beta.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers, cookies=cookies, data=data)
 
@@ -94,7 +103,7 @@ def remove_job(job_id):
     scheduler.remove_job(job_id=job_id)
 
 
-def get_table():
+def get_table(username):
     cookies = {
         '_ga': 'GA1.2.995791224.1495549650',
         'JSESSIONID': 'DEC9134EC3F3FFA705E13D49574CA5A3',
@@ -109,7 +118,7 @@ def get_table():
         'Connection': 'keep-alive',
     }
 
-    data = '{"email":"admin@tocabot.io","password":"CheckOUTth!spasschang#"}'#tocabot"}'
+    data = '{"email":{0},"password":{1}}'.format(username, SWITCH.get(username))
 
     response = requests.post('https://beta.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
                              cookies=cookies, data=data)
