@@ -1,0 +1,46 @@
+body {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    color: black;
+    /*text-shadow: 0.5px 0 0 #ffffff, 0 -0.5px 0 #ffffff, 0 0.5px 0 #ffffff, -0.5px 0 0 #ffffff;*/
+
+}
+
+h1 {
+    color: rgba(0,0,0,0.87);
+    font: 500 20px Arial !important;
+    padding-left: 10%;
+}
+
+.schedules {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.schedules td, .schedules th {
+    /*border: 1px solid rgba(221,221,221, 0.5);*/
+    padding: 8px;
+}
+
+/*tr {*/
+     /*color: rgba(0,0,0,.54);*/
+/*}*/
+
+/*.schedules tr:nth-child(even){*/
+    /*background-color: rgba(242,242,242, 0.5);*/
+/*}*/
+
+/*.schedules tr:hover {*/
+    /*background-color: rgba(221,221,221, 0.5);*/
+/*}*/
+
+.schedules th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: white;
+    color: rgb(0,0,0);
+}

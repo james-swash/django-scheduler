@@ -1,0 +1,71 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="create_schedule">
+    <h2>Create a new schedule</h2>
+
+    <!-- Button trigger modal -->
+<!-- Button trigger modal -->
+
+</div>
+    <table class="table table-hover" style="width:80%;" align="center">
+        <tr>
+            <th>Action name</th>
+            <th>Description</th>
+            <th>Action ID</th>
+            <th>Schedule Task</th>
+        </tr>
+
+            {% for action in action_table %}
+            <div class="schedule">
+                <tr>
+                    <td>{{action.name}}</td>
+                    <td>{{action.description}}</td>
+                    <td>{{action.id}}</td>
+                    <td><p data-action-id="{{ action.id }}" class="btn btn-primary action-click" data-toggle="modal" data-target="#exampleModal">Schedule Workflow</p></td>
+                </tr>
+            </div>
+            {% endfor %}
+    </table>
+</div>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form class="site-form" action="{% url 'toca_schedule:create' %}" method="post" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Scheduler</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% csrf_token %}
+                    <table class="table table-hover">
+                        {{ form }}
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Close" />
+                    <input type="submit" class="btn btn-primary" value="Submit" style="margin-bottom: 5px;" />
+                </div>
+          </form>
+      </div>
+    </div>
+  </div>
+<form class="create-link" action="{% url 'toca_schedule:list' %}" method="post" style="margin-left: 10%;">
+    {% csrf_token %}
+    <button class="btn btn-default" type="submit">Schedule List</button>
+</form>
+
+<script>
+        $(".action-click").on('click', function () {
+            var $this = $(this);
+            $("#id_action_id").val($this.attr("data-action-id"))
+        })
+</script>
+{% endblock %}
