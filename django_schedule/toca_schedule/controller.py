@@ -73,7 +73,7 @@ def scheduler_execution(action_id, username):
         'Connection': 'keep-alive',
     }
 
-    data = '{"email": '+username+', "password": '+SWITCH.get(username)+'}'
+    data = '{"email":"tocabot@ri-team.com","password":"t0caTRIAL4r3tailinsights"}'
 
     response = requests.post('https://trial.one.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
                              cookies=cookies, data=data)
@@ -120,7 +120,7 @@ def get_table(username):
         'Connection': 'keep-alive',
     }
 
-    data = '{"email": '+username+', "password": '+SWITCH.get(username)+'}'
+    data = '{"email":"tocabot@ri-team.com","password":"t0caTRIAL4r3tailinsights"}'
 
     response = requests.post('https://trial.one.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
                              cookies=cookies, data=data)
