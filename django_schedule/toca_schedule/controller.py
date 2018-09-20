@@ -69,14 +69,14 @@ def scheduler_execution(action_id, username):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'https://beta.tocabot.io/login',#'http://10.68.15.168:8080/login',
+        'Referer': 'https://trial.one.tocabot.io/login',#'http://10.68.15.168:8080/login',
         'Content-Type': 'application/json;charset=utf-8',
         'Connection': 'keep-alive',
     }
 
-    data = '{"email": {0},"password": {1}}'.format(username, SWITCH.get(username))
+    data = {"email": username, "password": SWITCH.get(username)}
 
-    response = requests.post('https://beta.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers, cookies=cookies, data=data)
+    response = requests.post('https://trial.one.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers, cookies=cookies, data=data)
 
     jwttoken = response.headers['Authorization']
 
@@ -85,7 +85,7 @@ def scheduler_execution(action_id, username):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'https://beta.tocabot.io/dashboard',#''http://10.68.15.168:8080/dashboard',
+        'Referer': 'https://trial.one.tocabot.io/dashboard',#''http://10.68.15.168:8080/dashboard',
         'Content-Type': 'application/json;charset=utf-8',
         'Authorization': 'Bearer '+jwttoken,
         'X-User-Timezone': 'GMT+0100',
@@ -94,7 +94,7 @@ def scheduler_execution(action_id, username):
 
     data = '{"orderBy":{"id":"desc"},"limit":15,"page":1,"order":"id","count":0}'
 
-    response = requests.post('https://beta.tocabot.io/rpa-core-server-rest/v1/workflow/'+action_id+'/execute', headers=headers, cookies=cookies, data=data)
+    response = requests.post('https://trial.one.tocabot.io/rpa-core-server-rest/v1/workflow/'+action_id+'/execute', headers=headers, cookies=cookies, data=data)
 
     print(response.text)
 
@@ -113,14 +113,14 @@ def get_table(username):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'https://beta.tocabot.io/login',#'http://10.68.15.168:8080/login',
+        'Referer': 'https://trial.one.tocabot.io/login',#'http://10.68.15.168:8080/login',
         'Content-Type': 'application/json;charset=utf-8',
         'Connection': 'keep-alive',
     }
 
-    data = '{"email":{0},"password":{1}}'.format(username, SWITCH.get(username))
+    data = {"email": username, "password": SWITCH.get(username)}
 
-    response = requests.post('https://beta.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
+    response = requests.post('https://trial.one.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
                              cookies=cookies, data=data)
 
     jwttoken = response.headers['Authorization']
@@ -130,7 +130,7 @@ def get_table(username):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'https://beta.tocabot.io/dashboard',#'http://10.68.15.168:8080/dashboard',
+        'Referer': 'https://trial.one.tocabot.io/dashboard',#'http://10.68.15.168:8080/dashboard',
         'Content-Type': 'application/json;charset=utf-8',
         'Authorization': 'Bearer ' + jwttoken,
         'X-User-Timezone': 'GMT+0100',
@@ -139,7 +139,7 @@ def get_table(username):
 
     data = '{"orderBy":{"id":"desc"},"limit":15,"page":1,"order":"id","count":0}'
 
-    response = requests.post('https://beta.tocabot.io/rpa-core-server-rest/v1/workflow/query', headers=headers,
+    response = requests.post('https://trial.one.tocabot.io/rpa-core-server-rest/v1/workflow/query', headers=headers,
                              cookies=cookies, data=data)
 
     records = json.loads(response.text)['records']
