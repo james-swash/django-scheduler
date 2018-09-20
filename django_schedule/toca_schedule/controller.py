@@ -68,28 +68,28 @@ def scheduler_execution(action_id, username):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'https://trial.one.tocabot.io/login',
+        'Referer': 'http://10.87.181.67:8080/login',
         'Content-Type': 'application/json;charset=utf-8',
         'Connection': 'keep-alive',
     }
 
     data = '{"email":"tocabot@ri-team.com","password":"t0caTRIAL4r3tailinsights"}'
 
-    response = requests.post('https://trial.one.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
+    response = requests.post('http://10.87.181.67:8080/rpa-security-rest/v1/user/auth/login', headers=headers,
                              cookies=cookies, data=data)
 
     jwttoken = response.headers['Authorization']
 
     # replace the headers var above to satisfy the new request.
     headers = {
-        'Origin': 'https://trial.one.tocabot.io',
+        'Origin': 'http://10.87.181.67:8080',
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
         'Authorization': 'Bearer ' + jwttoken,
         'X-User-Timezone': 'GMT+0100',
         'Content-Type': 'application/json;charset=UTF-8',
         'Accept': 'application/json, text/plain, */*',
-        'Referer': 'https://trial.one.tocabot.io/dashboard',
+        'Referer': 'http://10.87.181.67:8080/dashboard',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
         'Connection': 'keep-alive',
     }
@@ -115,34 +115,35 @@ def get_table(username):
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'https://trial.one.tocabot.io/login',
+        'Referer': 'http://10.87.181.67:8080/login',
         'Content-Type': 'application/json;charset=utf-8',
         'Connection': 'keep-alive',
     }
 
     data = '{"email":"tocabot@ri-team.com","password":"t0caTRIAL4r3tailinsights"}'
 
-    response = requests.post('https://trial.one.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
+    response = requests.post('http://10.87.181.67:8080/rpa-security-rest/v1/user/auth/login', headers=headers,
                              cookies=cookies, data=data)
 
     jwttoken = response.headers['Authorization']
 
+    # replace the headers var above to satisfy the new request.
     headers = {
-        'Origin': 'https://trial.one.tocabot.io',
+        'Origin': 'http://10.87.181.67:8080',
         'Accept-Encoding': 'gzip, deflate, br',
         'Accept-Language': 'en-GB,en-US;q=0.9,en;q=0.8',
         'Authorization': 'Bearer ' + jwttoken,
         'X-User-Timezone': 'GMT+0100',
         'Content-Type': 'application/json;charset=UTF-8',
         'Accept': 'application/json, text/plain, */*',
-        'Referer': 'https://trial.one.tocabot.io/dashboard',
+        'Referer': 'http://10.87.181.67:8080/dashboard',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
         'Connection': 'keep-alive',
     }
 
     data = '{"orderBy":{"id":"desc"},"limit":15,"page":1,"order":"id","count":0}'
 
-    response = requests.post('https://trial.one.tocabot.io/rpa-core-server-rest/v1/workflow/query', headers=headers,
+    response = requests.post('http://10.87.181.67:8080/rpa-core-server-rest/v1/workflow/query', headers=headers,
                              cookies=cookies, data=data)
 
     records = json.loads(response.text)['records']
