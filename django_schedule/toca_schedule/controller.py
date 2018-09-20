@@ -59,7 +59,7 @@ def scheduler_print(action_id):
 
 
 def scheduler_execution(action_id, username):
-    
+
     cookies = {
         '_ga': 'GA1.2.995791224.1495549650',
         'JSESSIONID': '7E1994BFCD899BD70BD7FC07B83DD440',
@@ -111,7 +111,7 @@ def get_table(username):
     }
 
     headers = {
-        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:62.0) Gecko/20100101 Firefox/62.0',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
         'Referer': 'https://trial.one.tocabot.io/login',
@@ -128,7 +128,7 @@ def get_table(username):
 
     # replace the headers var above to satisfy the new request.
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.100 Safari/537.36',
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
         'Referer': 'http://10.87.181.67:8080/dashboard',#'http://10.68.15.168:8080/dashboard',
