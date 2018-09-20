@@ -59,24 +59,25 @@ def scheduler_print(action_id):
 
 
 def scheduler_execution(action_id, username):
-
+    
     cookies = {
         '_ga': 'GA1.2.995791224.1495549650',
-        'JSESSIONID': 'DEC9134EC3F3FFA705E13D49574CA5A3',
+        'JSESSIONID': '7E1994BFCD899BD70BD7FC07B83DD440',
     }
 
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:62.0) Gecko/20100101 Firefox/62.0',
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'http://10.87.181.67:8080/login',#'http://10.68.15.168:8080/login',
+        'Referer': 'https://trial.one.tocabot.io/login',
         'Content-Type': 'application/json;charset=utf-8',
         'Connection': 'keep-alive',
     }
 
-    data = '{"email": '+username+', "password": "t0caTRIAL4r3tailinsights"}'
+    data = '{"email":"tocabot@ri-team.com","password":"t0caTRIAL4r3tailinsights"}'
 
-    response = requests.post('http://10.87.181.67:8080/rpa-security-rest/v1/user/auth/login', headers=headers, cookies=cookies, data=data)
+    response = requests.post('https://trial.one.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
+                             cookies=cookies, data=data)
 
     jwttoken = response.headers['Authorization']
 
@@ -106,21 +107,21 @@ def remove_job(job_id):
 def get_table(username):
     cookies = {
         '_ga': 'GA1.2.995791224.1495549650',
-        'JSESSIONID': 'DEC9134EC3F3FFA705E13D49574CA5A3',
+        'JSESSIONID': '7E1994BFCD899BD70BD7FC07B83DD440',
     }
 
     headers = {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/69.0.3497.92 Safari/537.36",#"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0",
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:62.0) Gecko/20100101 Firefox/62.0',
         'Accept': 'application/json, text/plain, */*',
         'Accept-Language': 'en-GB,en;q=0.5',
-        'Referer': 'http://10.87.181.67:8080/login',#'http://10.68.15.168:8080/login',
+        'Referer': 'https://trial.one.tocabot.io/login',
         'Content-Type': 'application/json;charset=utf-8',
         'Connection': 'keep-alive',
     }
 
-    data = '{"email": '+username+', "password": "t0caTRIAL4r3tailinsights"}'
+    data = '{"email":"tocabot@ri-team.com","password":"t0caTRIAL4r3tailinsights"}'
 
-    response = requests.post('http://10.87.181.67:8080/rpa-security-rest/v1/user/auth/login', headers=headers,
+    response = requests.post('https://trial.one.tocabot.io/rpa-security-rest/v1/user/auth/login', headers=headers,
                              cookies=cookies, data=data)
 
     jwttoken = response.headers['Authorization']
