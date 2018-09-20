@@ -25,7 +25,7 @@ SECRET_KEY = '+_reu!--x+-8agnem_9lbha4y8yixn5feslk#_u=^73ma_^uc*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['trial.one.tocabot.io']
 
 
 # Application definition
