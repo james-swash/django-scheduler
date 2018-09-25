@@ -24,8 +24,8 @@ def schedule_delete(request, job_id):
     return redirect('toca_schedule:list')
 
 
-@xframe_options_exempt
 @login_required(login_url="/accounts/login/")
+@xframe_options_exempt
 def schedule_create(request):
     actions_table = controller.get_table(request.user.get_username())
     if request.method == 'POST':
