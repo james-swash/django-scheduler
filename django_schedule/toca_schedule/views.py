@@ -5,6 +5,7 @@ from . import forms, controller
 from django.views.decorators.clickjacking import xframe_options_exempt
 
 
+@login_required(login_url="/accounts/login/")
 @xframe_options_exempt
 def schedule_list(request):
     schedules = Schedule.objects.all().order_by('started')
