@@ -2,24 +2,29 @@ from django.shortcuts import render, redirect
 from .models import Schedule
 from django.contrib.auth.decorators import login_required
 from . import forms, controller
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 
+@xframe_options_exempt
 def schedule_list(request):
     schedules = Schedule.objects.all().order_by('started')
     return render(request, 'toca_schedule/schedule_list.html', {'schedules': schedules})
 
 
+@xframe_options_exempt
 def schedule_detail(request, job_id):
     schedule = Schedule.objects.get(id=job_id)
     return render(request, 'toca_schedule/schedule_detail.html', {'schedule': schedule})
 
 
+@xframe_options_exempt
 def schedule_delete(request, job_id):
     Schedule.objects.get(id=job_id).delete()
     controller.remove_job(str(job_id))
     return redirect('toca_schedule:list')
 
 
+@xframe_options_exempt
 @login_required(login_url="/accounts/login/")
 def schedule_create(request):
     actions_table = controller.get_table(request.user.get_username())

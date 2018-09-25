@@ -34,7 +34,7 @@ def login_view(request):
         form = AuthenticationForm()
     return render(request, 'accounts/login.html', {'form': form})
 
-
+@xframe_options_exempt
 def logout_view(request):
     if request.method == 'POST':
         logout(request)
