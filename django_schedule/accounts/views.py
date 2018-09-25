@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth import login, logout
+from django.views.decorators.clickjacking import xframe_options_exempt
+
 # Create your views here.
 
 
@@ -17,6 +19,7 @@ def signup_view(request):
     return render(request, 'accounts/signup.html', {'form': form})
 
 
+@xframe_options_exempt
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
