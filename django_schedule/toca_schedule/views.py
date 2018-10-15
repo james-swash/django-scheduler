@@ -3,6 +3,7 @@ from .models import Schedule
 from django.contrib.auth.decorators import login_required
 from . import forms, controller
 from django.views.decorators.clickjacking import xframe_options_exempt
+import datetime
 
 
 @login_required(login_url="/accounts/login/")
@@ -30,7 +31,7 @@ def schedule_delete(request, job_id):
 def schedule_create(request):
     actions_table = controller.get_table(request.user.get_username())
     if request.method == 'POST':
-        form = forms.CreateSchedule(request.POST)#, request.FILES) <-- include if upload field on the form
+        form = forms.CreateSchedule(request.POST)  # , request.FILES) <-- include if upload field on the form
         if form.is_valid():
             instance = form.save(commit=False)
             instance.author = request.user
@@ -41,7 +42,10 @@ def schedule_create(request):
                 job_id=instance.id,
                 username=request.user.get_username()
             )
-            chronic.start_job()
+            try:
+                chronic.start_job()
+            except:
+                print("Unable to start Job at this time: {}".format(datetime.datetime.now()))
             return redirect('toca_schedule:list')
     else:
         form = forms.CreateSchedule()

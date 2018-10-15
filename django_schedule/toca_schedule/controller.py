@@ -17,19 +17,41 @@ class CronObj(object):
 
     def __init__(self, action_id, scheduled, job_id, username):
         split_string = scheduled.split(' ')
-        self.year = split_string[0]
-        self.month = split_string[1]
-        self.day = split_string[2]
-        self.week = split_string[3]
-        self.day_of_week = split_string[4]
-        self.hour = split_string[5]
-        self.minute = split_string[6]
-        self.second = split_string[7]
+        try:
+            self.year = split_string[0]
+        except:
+            self.year = None
+        try:
+            self.month = split_string[1]
+        except:
+            self.month = None
+        try:
+            self.day = split_string[2]
+        except:
+            self.day = None
+        try:
+            self.week = split_string[3]
+        except:
+            self.week = None
+        try:
+            self.day_of_week = split_string[4]
+        except:
+            self.day_of_week = None
+        try:
+            self.hour = split_string[5]
+        except:
+            self.hour = None
+        try:
+            self.minute = split_string[6]
+        except:
+            self.minute = None
+        try:
+            self.second = split_string[7]
+        except:
+            self.second = None
         self.action_id = action_id
         self.job_id = str(job_id)
         self.username = username
-        # self.start = split_string[8]
-        # self.end = split_string[9]
 
     def start_job(self):
         print(self.action_id)
@@ -49,8 +71,6 @@ class CronObj(object):
             hour=self.hour,
             minute=self.minute,
             second=self.second
-            # start_date=self.start,
-            # end_date=self.end
         )
 
 
