@@ -161,7 +161,7 @@ def get_table(username):
         'Connection': 'keep-alive',
     }
 
-    data = '{"orderBy":{"id":"desc"},"limit":15,"page":1,"order":"id","count":0}'
+    data = '{"orderBy":{"id":"desc"},"limit":100,"page":1,"order":"id","count":0}'
 
     response = requests.post('http://10.87.181.67:8080/rpa-core-server-rest/v1/workflow/query', headers=headers,
                              cookies=cookies, data=data)
